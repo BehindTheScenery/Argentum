@@ -1,6 +1,6 @@
 modLoader="javafml"
 loaderVersion="[3,]"
-issueTrackerURL="https://github.com/neoforged/NeoForge/issues"
+issueTrackerURL="https://github.com/BehindTheScenery/Argentum/issues"
 logoFile="neoforged_logo.png"
 license="LGPL v2.1"
 
@@ -8,12 +8,12 @@ license="LGPL v2.1"
     modId="neoforge"
     # We use the global NeoForge version
     version="${global.neoForgeVersion}"
-    #updateJSONURL="https://maven.neoforged.net/releases/net/neoforged/forge/promotions_slim.json"
-    displayName="NeoForge"
-    credits="Anyone who has contributed on Github and supports our development"
-    authors="The NeoForged Team"
+    displayURL = "https://github.com/BehindTheScenery/Argentum"
+    displayName="Argentum"
+    credits="Thanks to NeoForge for the possibility of forks"
+    authors="Aros, BehindTheScenery"
     description='''
-    NeoForge, a NEW broad compatibility API.
+    Argentum, fork of NeoForge by BTS with native Vulkan support and much more
     '''
 
 [[mixins]]
