@@ -1,31 +1,30 @@
-Unless noted below, NeoForge, NeoForge Mod Loader, and all 
+Unless noted below, Argentum, Argentum Loader, and all
 parts herein are licensed under the terms of the LGPL 2.1 found
 here http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt and 
 copied below.
 
-Homepage: https://neoforged.net/
-          https://github.com/neoforged/NeoForge
-          
+Homepage: https://argentum.behindthescenery.online/
+          https://github.com/BehindTheScenery/Argentum
 
 A note on authorship:
 All source artifacts are property of their original author, with
 the exclusion of the contents of the patches directory and others
 copied from it from time to time. Authorship of the contents of
-the patches directory is retained by the NeoForge project.
+the patches directory is retained by the Argentum project.
 This is because the patches are partially machine generated
-artifacts, and are changed heavily due to the way NeoForge works.
+artifacts, and are changed heavily due to the way Argentum works.
 Individual attribution within them is impossible.
 
 Consent:
-All contributions to NeoForge must consent to the release of any
-patch content to the NeoForge project.
+All contributions to Argentum must consent to the release of any
+patch content to the Argentum project.
 
 A note on infectivity:
-The LGPL is chosen specifically so that projects may depend on NeoForge
+The LGPL is chosen specifically so that projects may depend on Argentum
 features without being infected with its license. That is the 
 purpose of the LGPL. Mods and others using this code via ordinary
 Java mechanics for referencing libraries are specifically not bound
-by NeoForge's license for the Mod code.
+by Argentum's license for the Mod code.
 
 
 === MCP Data ===
@@ -35,7 +34,7 @@ third parties requires independent licensing from the MCP team. This data is not
 redistributable without permission from the MCP team.
 
 === Sharing ===
-I grant permission for some parts of FML to be redistributed outside the terms of the LGPL, for the benefit of
+I grant permission for some parts of Argentum Loader to be redistributed outside the terms of the LGPL, for the benefit of
 the minecraft modding community. All contributions to these parts should be licensed under the same additional grant.
 
 -- Runtime patcher --
