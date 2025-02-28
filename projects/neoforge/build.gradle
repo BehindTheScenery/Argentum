@@ -12,10 +12,10 @@ plugins {
 
 gradleutils.setupSigning(project: project, signAllPublications: true)
 
-changelog {
-    from '21.0'
-    disableAutomaticPublicationRegistration()
-}
+//changelog {
+//    from '21.0'
+//    disableAutomaticPublicationRegistration()
+//}
 
 dynamicProject {
     runtime("${project.minecraft_version}-${project.neoform_version}",
@@ -98,6 +98,8 @@ dependencies {
         exclude group: 'org.slf4j'
         exclude group: 'net.fabricmc'
     }
+
+
     installer "cpw.mods:securejarhandler:${project.securejarhandler_version}"
     installer "org.ow2.asm:asm:${project.asm_version}"
     installer "org.ow2.asm:asm-commons:${project.asm_version}"
@@ -136,6 +138,52 @@ dependencies {
 
     userdevTestImplementation("net.neoforged.fancymodloader:junit-fml:${project.fancy_mod_loader_version}")
     compileOnly(jarJar(project(":neoforge-coremods")))
+    compileOnly(jarJar(project(":argentumlibs")))
+
+
+    userdevCompileOnly jarJar ("org.lwjgl:lwjgl-vulkan:$lwjglVersion") {
+        exclude group: 'org.lwjgl'
+    }
+    userdevCompileOnly jarJar ("org.lwjgl:lwjgl-vma:$lwjglVersion") {
+        exclude group: 'org.lwjgl'
+    }
+    userdevCompileOnly jarJar ("org.lwjgl:lwjgl-shaderc:$lwjglVersion") {
+        exclude group: 'org.lwjgl'
+    }
+
+    userdevCompileOnly jarJar("io.github.spair:imgui-java-lwjgl3:${project.imguiVersion}")
+    userdevCompileOnly jarJar("io.github.spair:imgui-java-binding:${project.imguiVersion}")
+    userdevCompileOnly jarJar("io.github.spair:imgui-java-natives-windows:${project.imguiVersion}")
+    userdevCompileOnly jarJar("io.github.spair:imgui-java-natives-linux:${project.imguiVersion}")
+    userdevCompileOnly jarJar("io.github.spair:imgui-java-natives-macos:${project.imguiVersion}")
+
+    userdevCompileOnly jarJar("org.lwjgl:lwjgl-shaderc:$lwjglVersion:$winNatives") {
+        exclude group: 'org.lwjgl'
+    }
+    userdevCompileOnly jarJar("org.lwjgl:lwjgl-shaderc:$lwjglVersion:$linuxNatives") {
+        exclude group: 'org.lwjgl'
+    }
+    userdevCompileOnly jarJar("org.lwjgl:lwjgl-shaderc:$lwjglVersion:$macosNatives") {
+        exclude group: 'org.lwjgl'
+    }
+    userdevCompileOnly jarJar("org.lwjgl:lwjgl-shaderc:$lwjglVersion:$macosArmNatives") {
+        exclude group: 'org.lwjgl'
+    }
+
+    userdevCompileOnly jarJar("org.lwjgl:lwjgl-vma:$lwjglVersion:$winNatives") {
+        exclude group: 'org.lwjgl'
+    }
+    userdevCompileOnly jarJar("org.lwjgl:lwjgl-vma:$lwjglVersion:$linuxNatives") {
+        exclude group: 'org.lwjgl'
+    }
+    userdevCompileOnly jarJar("org.lwjgl:lwjgl-vma:$lwjglVersion:$macosNatives") {
+        exclude group: 'org.lwjgl'
+    }
+    userdevCompileOnly jarJar("org.lwjgl:lwjgl-vma:$lwjglVersion:$macosArmNatives") {
+        exclude group: 'org.lwjgl'
+    }
+
+    userdevCompileOnly(jarJar annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-common:0.2.0"))
 }
 
 tasks.register('genPatches') {
@@ -211,6 +259,7 @@ runs {
 
 runs.configureEach { it ->
     modSources.add project(":neoforge-coremods").sourceSets.main
+    modSources.add project(":argentumlibs").sourceSets.main
 
     final File gameDir = project.file("run/${it.name}") as File
     gameDir.mkdirs();
@@ -466,11 +515,11 @@ afterEvaluate {
             builtBy(signInstallerJar)
             setClassifier("installer")
         }
-        changelog(createChangelog.outputFile) {
-            builtBy(createChangelog)
-            setClassifier("changelog")
-            setExtension("txt")
-        }
+//        changelog(createChangelog.outputFile) {
+//            builtBy(createChangelog)
+//            setClassifier("changelog")
+//            setExtension("txt")
+//        }
     }
 }
 
@@ -519,4 +568,8 @@ publishing {
     repositories {
         maven gradleutils.getPublishingMaven()
     }
+}
+
+tasks.named("compileJava").configure {
+    dependsOn(":argentumlibs:shadowJar")
 }

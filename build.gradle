@@ -9,6 +9,9 @@ plugins {
     id 'neoforge.versioning'
 }
 
+
+
+
 ext.isPreReleaseVersion = project.minecraft_version.contains('w') || project.minecraft_version.contains('-')
 
 project.version = project.mod_version
@@ -20,6 +23,11 @@ allprojects {
     version rootProject.version
     group 'net.neoforged'
     repositories {
+        maven {
+            url "https://mvnrepository.com/artifact/org.lwjgl/"
+        }
+        maven { url = "https://maven.bawnorton.com/releases" }
+        mavenCentral()
         mavenLocal()
     }
 }
@@ -31,7 +39,12 @@ subprojects {
 }
 
 repositories {
+    maven {
+        url "https://mvnrepository.com/artifact/"
+    }
+    mavenLocal()
     mavenCentral()
+    maven { url = "https://maven.bawnorton.com/releases" }
 }
 
 // Put licenser here otherwise it tries to license all source sets including decompiled MC sources

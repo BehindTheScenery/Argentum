@@ -18,6 +18,8 @@ dynamicProjects {
 
     project(":base").projectDir = file("projects/base")
     project(":neoforge").projectDir = file("projects/neoforge")
+
+
 }
 
 include ':tests'
@@ -28,3 +30,5 @@ include ':coremods'
 // Ensure a unique artifact id within JIJ that does not conflict with net.neoforged:coremods, which is
 // another external dependency.
 project(":coremods").name = "neoforge-coremods"
+include 'argentumlibs'
+
