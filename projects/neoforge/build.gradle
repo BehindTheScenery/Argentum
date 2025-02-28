@@ -89,11 +89,11 @@ dependencies {
     moduleOnly "cpw.mods:bootstraplauncher:${project.bootstraplauncher_version}"
     moduleOnly "net.neoforged:JarJarFileSystems:${project.jarjar_version}"
 
-    installer ("net.neoforged.fancymodloader:loader:${project.fancy_mod_loader_version}") {
+    installer ("dev.behindthescenery.argentum-loader:loader:${project.argentum_loader_version}") {
         exclude group: 'org.slf4j'
         exclude group: 'net.fabricmc'
     }
-    installer ("net.neoforged.fancymodloader:earlydisplay:${project.fancy_mod_loader_version}") {
+    installer ("dev.behindthescenery.argentum-loader:earlydisplay:${project.argentum_loader_version}") {
         exclude group: 'org.lwjgl'
         exclude group: 'org.slf4j'
         exclude group: 'net.fabricmc'
@@ -134,7 +134,7 @@ dependencies {
         jarJar.ranged(it, "[${project.mixin_extras_version},)")
     }
 
-    userdevTestImplementation("net.neoforged.fancymodloader:junit-fml:${project.fancy_mod_loader_version}")
+    userdevTestImplementation("dev.behindthescenery.argentum-loader:junit:${project.argentum_loader_version}")
     compileOnly(jarJar(project(":neoforge-coremods")))
 }
 
@@ -148,7 +148,7 @@ runTypes {
         client true
 
         arguments.addAll '--fml.neoForgeVersion', project.version
-        arguments.addAll '--fml.fmlVersion', project.fancy_mod_loader_version
+        arguments.addAll '--fml.fmlVersion', project.argentum_loader_version
         arguments.addAll '--fml.mcVersion', project.minecraft_version
         arguments.addAll '--fml.neoFormVersion', project.neoform_version
     }
@@ -157,7 +157,7 @@ runTypes {
         server true
 
         arguments.addAll '--fml.neoForgeVersion', project.version
-        arguments.addAll '--fml.fmlVersion', project.fancy_mod_loader_version
+        arguments.addAll '--fml.fmlVersion', project.argentum_loader_version
         arguments.addAll '--fml.mcVersion', project.minecraft_version
         arguments.addAll '--fml.neoFormVersion', project.neoform_version
     }
@@ -179,7 +179,7 @@ runTypes {
 
         // Don't set modid here so we can reuse this runType for test datagen
         arguments.addAll '--fml.neoForgeVersion', project.version
-        arguments.addAll '--fml.fmlVersion', project.fancy_mod_loader_version
+        arguments.addAll '--fml.fmlVersion', project.argentum_loader_version
         arguments.addAll '--fml.mcVersion', project.minecraft_version
         arguments.addAll '--fml.neoFormVersion', project.neoform_version
     }
@@ -187,7 +187,7 @@ runTypes {
     junit {
         junit true
         arguments.addAll '--fml.neoForgeVersion', project.version
-        arguments.addAll '--fml.fmlVersion', project.fancy_mod_loader_version
+        arguments.addAll '--fml.fmlVersion', project.argentum_loader_version
         arguments.addAll '--fml.mcVersion', project.minecraft_version
         arguments.addAll '--fml.neoFormVersion', project.neoform_version
     }
@@ -224,7 +224,7 @@ launcherProfile {
         game '--fml.neoForgeVersion'
         game project.version
         game '--fml.fmlVersion'
-        game project.fancy_mod_loader_version
+        game project.argentum_loader_version
         game '--fml.mcVersion'
         game project.minecraft_version
         game '--fml.neoFormVersion'
@@ -237,7 +237,7 @@ userdevProfile {
         argument '--fml.neoForgeVersion'
         argument project.version
         argument '--fml.fmlVersion'
-        argument project.fancy_mod_loader_version
+        argument project.argentum_loader_version
         argument '--fml.mcVersion'
         argument project.minecraft_version
         argument '--fml.neoFormVersion'
@@ -433,7 +433,7 @@ dependencies {
         }
         endorseStrictVersions()
     }
-    modDevTestFixtures("net.neoforged.fancymodloader:junit-fml:${project.fancy_mod_loader_version}") {
+    modDevTestFixtures("dev.behindthescenery.argentum-loader:junit:${project.argentum_loader_version}") {
         endorseStrictVersions()
     }
 }

@@ -43,7 +43,7 @@ dependencies {
     junitRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
 
     junitImplementation("org.assertj:assertj-core:${project.assertj_core}")
-    junitImplementation "net.neoforged.fancymodloader:junit-fml:${project.fancy_mod_loader_version}"
+    junitImplementation "dev.behindthescenery.argentum-loader:junit:${project.argentum_loader_version}"
 
     compileOnly "org.jetbrains:annotations:${project.jetbrains_annotations_version}"
 }

@@ -7,6 +7,7 @@ plugins {
     id 'net.neoforged.licenser' version '0.7.2'
     id 'neoforge.formatting-conventions'
     id 'neoforge.versioning'
+    id 'co.uzzu.dotenv.gradle' version "4.0.0"
 }
 
 ext.isPreReleaseVersion = project.minecraft_version.contains('w') || project.minecraft_version.contains('-')
@@ -14,12 +15,19 @@ ext.isPreReleaseVersion = project.minecraft_version.contains('w') || project.min
 project.version = project.mod_version
 
 // Print version, generally useful to know - also appears on CI
-System.out.println("NeoForge version ${project.version}")
+System.out.println("Argentum version ${project.version}")
 
 allprojects {
     version rootProject.version
     group 'net.neoforged'
     repositories {
+        maven {
+            url = uri("https://maven.pkg.github.com/BehindTheScenery/ArgentumLoader")
+            credentials {
+                username = env.fetchOrNull("USERNAME") ?: System.getProperty("GITHUB_USERNAME")
+                password = env.fetchOrNull("TOKEN") ?: System.getProperty("GITHUB_TOKEN")
+            }
+        }
         mavenLocal()
     }
 }
